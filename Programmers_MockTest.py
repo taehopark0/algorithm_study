@@ -12,11 +12,12 @@ answers = [1,3,2,4,2]
 def solution(answers):
     n = len(answers)
     mocktest=[]
+    answer=[]
     A=0
     B=0
     C=0
-    An = [1,2,3,4,5]*(n//5)+[1,2,3,4,5][:n%5]
-    Bn = [2,1,2,3,2,4,5,2]*(n//8)+[2,1,2,3,2,4,5,2][:n%8]
+    An = [1,2,3,4,5]
+    Bn = [2,1,2,3,2,4,2,5]*(n//8)+[2,1,2,3,2,4,2,5][:n%8]
     Cn = [3, 3, 1, 1, 2, 2, 4, 4, 5, 5]*(n//10)+[3, 3, 1, 1, 2, 2, 4, 4, 5, 5][:n%10]
     for i in range(n):
         if answers[i] == An[i]:
@@ -25,11 +26,11 @@ def solution(answers):
             B = B+1
         if answers[i] == Cn[i]:
             C = C+1
-    if max(A,B,C) == A:
-        mocktest.append(1)
-    if max(A,B,C) == B:
-        mocktest.append(2)
-    if max(A, B, C) == C:
-        mocktest.append(3)
-    return mocktest
+
+    mocktest =[A,B,C]
+
+    for person, score in enumerate(mocktest):
+        if score == max(mocktest):
+            answer.append(person+1)
+    return answer
 print(solution(answers))
