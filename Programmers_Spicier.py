@@ -23,8 +23,9 @@ def solution(scoville, K):
         scoville = sorted(scoville)
         if scoville[0] < K:
             answer+=1
+        elif scoville[0] < K and len(scoville) == 0:
+            return -1
         if scoville[0] >= K:
-
             break
     return answer+1
 print(solution(scoville,K))
